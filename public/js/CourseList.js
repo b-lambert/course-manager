@@ -1,8 +1,9 @@
 var CourseList = React.createClass({
   render: function() {
+    var that = this;
     var courseNodes = $.map(this.props.data["courses"], function(course) {
       return (
-        <Course course={course}/>
+        <Course context={that} course={course}/>
       );
     });
 
@@ -12,5 +13,10 @@ var CourseList = React.createClass({
         {courseNodes}
       </div>
     );
+  },
+
+
+  getInitialState: function(){
+    return({registeredCourses: []});
   }
 });
