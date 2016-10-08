@@ -21,8 +21,14 @@ var CourseList = React.createClass({
   addDropCourse: function(course){
     var registeredCourses = this.state.registeredCourses;
     for(var i = 0; i < course["dayIndex"].length; i++) {
+      var coursesInDay = registeredCourses[course["dayIndex"][i]-1];
+      for(var j = 0; j < coursesInDay.length; j++) {
+        if((coursesInDay[j]["timeIndex"][0] < course["timeIndex"][1])|| (coursesInDay[j]["timeIndex"][1] > course["timeIndex"][0])) {
+          console.log("Could not add this course due to a conflict.");
+          return;
+        }
+      }
       registeredCourses[course["dayIndex"][i]-1] = registeredCourses[course["dayIndex"][i]-1].concat([course]);
-      console.log(registeredCourses);
     }
     this.setState({registeredCourses: registeredCourses});
   },
