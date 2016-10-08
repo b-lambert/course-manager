@@ -4,7 +4,7 @@ var CourseList = React.createClass({
     var courseNodes = $.map(this.props.data["courses"], function(course) {
       return (
         <div>
-          <Course addDropCourse={that.addDropCourse} registeredCourses={that.state.registeredCourses} course={course}/>
+          <Course key={course["id"]} addDropCourse={that.addDropCourse} registeredCourses={that.state.registeredCourses} course={course}/>
         </div>
       );
     });
@@ -22,9 +22,15 @@ var CourseList = React.createClass({
     var registeredCourses = this.state.registeredCourses;
     for(var i = 0; i < course["dayIndex"].length; i++) {
       var coursesInDay = registeredCourses[course["dayIndex"][i]-1];
+      console.log(coursesInDay);
       for(var j = 0; j < coursesInDay.length; j++) {
-        if((coursesInDay[j]["timeIndex"][0] < course["timeIndex"][1])|| (coursesInDay[j]["timeIndex"][1] > course["timeIndex"][0])) {
-          console.log("Could not add this course due to a conflict.");
+        // TODO Move this into a function
+        if((coursesInDay[j]["timeIndex"][1] > course["timeIndex"][0] && coursesInDay[j]["timeIndex"][0] < course["timeIndex"][0]) ||
+          (coursesInDay[j]["timeIndex"][0] > course["timeIndex"][1] && coursesInDay[j]["timeIndex"][1] < course["timeIndex"][1]) ||
+          (coursesInDay[j]["timeIndex"][0] == course["timeIndex"][0] && coursesInDay[j]["timeIndex"][1] == course["timeIndex"][1])
+        ) {
+          // TODO more elegant error handling.
+          alert("Could not add this course due to a schedule conflict with " + coursesInDay[j]["name"]);
           return;
         }
       }
