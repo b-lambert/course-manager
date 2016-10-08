@@ -17,7 +17,8 @@ var Course = React.createClass({
       </div>
     );
   },
-    addDropCourse: function(){
-      this.props.context.setState({registeredCourses: this.props.context.state.registeredCourses.concat([this.props.course["name"]])});
-    }
+
+  addDropCourse: function(){
+    this.props.addDropCourse(this.props.course);
+  }
 });
