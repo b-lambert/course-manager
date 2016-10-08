@@ -5,14 +5,13 @@ var CourseList = React.createClass({
       return (
         <div>
           <Course addDropCourse={that.addDropCourse} registeredCourses={that.state.registeredCourses} course={course}/>
-
         </div>
       );
     });
 
     return (
       <div className="courseList">
-        <h1>Courses</h1>
+        <h2>Courses</h2>
         {courseNodes}
         <Calendar registeredCourses={this.state.registeredCourses} />
       </div>

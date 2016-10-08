@@ -9,7 +9,7 @@ var Calendar = React.createClass({
 
     return (
       <div>
-        <h1>Week</h1>
+        <h3>Week</h3>
         {dayNodes}
       </div>
     );
