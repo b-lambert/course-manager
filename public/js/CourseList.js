@@ -3,7 +3,10 @@ var CourseList = React.createClass({
     var that = this;
     var courseNodes = $.map(this.props.data["courses"], function(course) {
       return (
-        <Course addDropCourse={that.addDropCourse} registeredCourses={that.state.registeredCourses} course={course}/>
+        <div>
+          <Course addDropCourse={that.addDropCourse} registeredCourses={that.state.registeredCourses} course={course}/>
+
+        </div>
       );
     });
 
@@ -11,6 +14,7 @@ var CourseList = React.createClass({
       <div className="courseList">
         <h1>Courses</h1>
         {courseNodes}
+        <Calendar registeredCourses={this.state.registeredCourses} />
       </div>
     );
   },
