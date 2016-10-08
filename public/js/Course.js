@@ -3,9 +3,9 @@ var Course = React.createClass({
     return (
       <div className="card" onClick={this.addDropCourse}>
         <div className="card-content">
-          <p>
+          <div className="card-title">
             {this.props.course["name"]}
-          </p>
+          </div>
           <p>
             {this.props.course["author"]}
           </p>

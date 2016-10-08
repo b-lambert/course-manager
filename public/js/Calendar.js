@@ -1,9 +1,9 @@
 var Calendar = React.createClass({
   render: function() {
     var that = this;
-    var dayNodes = $.map(this.props.registeredCourses, function(courses) {
+    var dayNodes = $.map(this.props.registeredCourses, function(courses, i) {
       return (
-        <Day courses={courses}/>
+        <Day dayNumber={i} courses={courses}/>
       );
     });
 
