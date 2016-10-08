@@ -33,6 +33,8 @@ var CourseList = React.createClass({
           alert("Could not add this course due to a schedule conflict with " + coursesInDay[j]["name"]);
           return;
         }
+        // TODO insert course in list at correct location
+        //else if(course["timeIndex"][0] >=(coursesInDay[j]["timeIndex"][1] && )
       }
       registeredCourses[course["dayIndex"][i]-1] = registeredCourses[course["dayIndex"][i]-1].concat([course]);
     }

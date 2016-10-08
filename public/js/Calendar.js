@@ -9,13 +9,18 @@ var Calendar = React.createClass({
 
     return (
       <div>
+        <input onChange={this.handleNameChange} value={this.state.calendarName} type="text"></input>
         <h3>Week</h3>
         {dayNodes}
       </div>
     );
   },
   getInitialState: function(){
-    return({registeredCourses: this.props.registeredCourses });
+    return({registeredCourses: this.props.registeredCourses, calendarName: "My Calendar"});
+  },
+
+  handleNameChange: function(e){
+    this.setState({calendarName: e.target.value});
   }
 
   // addDropCourse: function(course){
