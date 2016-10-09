@@ -22,8 +22,9 @@ var CourseList = React.createClass({
     var registeredCourses = this.state.registeredCourses;
     for(var i = 0; i < course["dayIndex"].length; i++) {
       var coursesInDay = registeredCourses[course["dayIndex"][i]-1];
-      console.log(coursesInDay);
+      //console.log(coursesInDay);
       for(var j = 0; j < coursesInDay.length; j++) {
+        var indexToInsert = null;
         // TODO Move this into a function
         if((coursesInDay[j]["timeIndex"][1] > course["timeIndex"][0] && coursesInDay[j]["timeIndex"][0] < course["timeIndex"][0]) ||
           (coursesInDay[j]["timeIndex"][0] > course["timeIndex"][1] && coursesInDay[j]["timeIndex"][1] < course["timeIndex"][1]) ||
@@ -34,10 +35,11 @@ var CourseList = React.createClass({
           alert("Could not add this course due to a schedule conflict with " + coursesInDay[j]["name"]);
           return;
         }
-        // TODO insert course in list at correct location
-        //else if(course["timeIndex"][0] >=(coursesInDay[j]["timeIndex"][1] && )
+        else if(indexToInsert === null && ((j < coursesInDay.length - 1) && ([j]["timeIndex"][0] >= course["timeIndex"][1]))){
+          indexToInsert = j;
+        }
       }
-      registeredCourses[course["dayIndex"][i]-1] = registeredCourses[course["dayIndex"][i]-1].concat([course]);
+      registeredCourses[course["dayIndex"][i]-1].splice(indexToInsert, 0, course);
     }
     this.setState({registeredCourses: registeredCourses});
   },
