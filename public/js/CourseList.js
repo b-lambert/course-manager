@@ -44,7 +44,7 @@ var CourseList = React.createClass({
           return false;
         }
         // TODO: if you have 9am-11am and 7am-9am (also, out of order lol) and add 10am-12pm, doesnt work since proptery 0 is undefined
-        else if(indexToInsert === null && ((j < coursesInDay.length - 1) && ([j]["timeIndex"][0] >= newCourse["timeIndex"][1]))){
+        else if(indexToInsert === null && ((j < coursesInDay.length - 1) && (registeredCourseStart >= newCourseEnd))){
           indexToInsert = j;
         }
       }
