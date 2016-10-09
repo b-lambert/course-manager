@@ -13,7 +13,6 @@ var Calendar = React.createClass({
       sortedCourses.sort(function(a, b) {
         // We can guarantee no overlaps at this point.
         if(a["timeIndex"] !== undefined || b["timeIndex"] !== undefined) {
-          console.log("I suspect we won't reach this.");
           return a["timeIndex"][1] - b["timeIndex"][1];
         }
         return 0;
