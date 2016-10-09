@@ -16,7 +16,7 @@ var CourseList = React.createClass({
         <div className="courseList col s6 m4 l2">
           {courseNodes}
         </div>
-      <div className="col s6 m4 l10">
+      <div className="col s6 m8 l10">
         <Calendar registeredCourses={this.state.registeredCourses} />
       </div>
       </div>

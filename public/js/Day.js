@@ -1,5 +1,6 @@
 var Day = React.createClass({
   render: function() {
+
     var courseNodes = $.map(this.props.courses, function(course) {
       return (
         <div>
@@ -7,7 +8,14 @@ var Day = React.createClass({
         </div>
       );
     });
-
+    if(courseNodes.length === 0) {
+      return (
+        <div>
+          <h4>{this.getDayName(this.props.dayNumber)}</h4>
+          <p>No classes</p>
+        </div>
+      );
+    }
     return (
       <div>
         <h4>{this.getDayName(this.props.dayNumber)}</h4>

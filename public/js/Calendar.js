@@ -1,9 +1,10 @@
 var Calendar = React.createClass({
   render: function() {
     var that = this;
+
     var dayNodes = $.map(this.props.registeredCourses, function(courses, i) {
       return (
-        <div className="col s12 m8 l2">
+        <div className="col s12 m12 l12">
           <Day dayNumber={i} courses={courses}/>
         </div>
       );
@@ -12,7 +13,7 @@ var Calendar = React.createClass({
     return (
       <div>
         <input onChange={this.handleNameChange} value={this.state.calendarName} type="text"></input>
-        <h3>Week</h3>
+        <h3>Weekly Schedule</h3>
         <div className="row">
           {dayNodes}
         </div>
