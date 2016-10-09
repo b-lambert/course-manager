@@ -34,7 +34,7 @@ var CourseList = React.createClass({
           (coursesInDay[j]["timeIndex"][0] == course["timeIndex"][0] && coursesInDay[j]["timeIndex"][1] == course["timeIndex"][1]) ||
           (coursesInDay[j]["timeIndex"][0] > course["timeIndex"][0] && coursesInDay[j]["timeIndex"][0] < course["timeIndex"][1])
         ) {
-          Materialize.toast("Could not add this course due to a schedule conflict with " + coursesInDay[j]["name"], 4000);
+          Materialize.toast("Could not register for this course due to a schedule conflict with " + coursesInDay[j]["name"], 4000);
           return false;
         }
         // TODO: if you have 9am-11am and 7am-9am (also, out of order lol) and add 10am-12pm, doesnt work since proptery 0 is undefined
