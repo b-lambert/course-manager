@@ -3,9 +3,25 @@ var Calendar = React.createClass({
     var that = this;
 
     var dayNodes = $.map(this.props.registeredCourses, function(courses, i) {
+      var unsortedCourses = courses;
+      //console.log(unsortedCourses);
+      if(unsortedCourses.length > 0) {
+        var sortedCourses = unsortedCourses.sort(function(a, b) {
+          // We can guarantee no overlaps at this point.
+          if(a["timeIndex"] !== undefined || b["timeIndex"] !== undefined) {
+            console.log("I suspect we won't reach this.");
+            return b["timeIndex"][1] - a["timeIndex"][1];
+          }
+          return 0;
+        });
+        console.log(sortedCourses);
+      }
+      else {
+        sortedCourses = courses;
+      }
       return (
         <div className="col s12 m12 l12">
-          <Day dayNumber={i} courses={courses}/>
+          <Day dayNumber={i} courses={sortedCourses}/>
         </div>
       );
     });

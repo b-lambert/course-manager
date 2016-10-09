@@ -31,8 +31,6 @@ var Course = React.createClass({
   addDropCourse: function(){
     if(this.props.addDropCourse(this.props.course) === true) {
       var registered = this.state.registered;
-      console.log("state was " + registered);
-      console.log("we are trying to update to " + !registered);
       this.setState({registered: !registered});
     }
   }
