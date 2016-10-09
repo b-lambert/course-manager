@@ -4,24 +4,23 @@ var Calendar = React.createClass({
 
     var dayNodes = $.map(this.props.registeredCourses, function(courses, i) {
       var unsortedCourses = courses;
-      //console.log(unsortedCourses);
-      if(unsortedCourses.length > 0) {
-        var sortedCourses = unsortedCourses.sort(function(a, b) {
-          // We can guarantee no overlaps at this point.
-          if(a["timeIndex"] !== undefined || b["timeIndex"] !== undefined) {
-            console.log("I suspect we won't reach this.");
-            return b["timeIndex"][1] - a["timeIndex"][1];
-          }
-          return 0;
-        });
-        console.log(sortedCourses);
+      var sortedCourses = []
+      for (var key in unsortedCourses) {
+        if (unsortedCourses.hasOwnProperty(key)) {
+          sortedCourses.push(unsortedCourses[key]);
+        }
       }
-      else {
-        sortedCourses = courses;
-      }
+      sortedCourses.sort(function(a, b) {
+        // We can guarantee no overlaps at this point.
+        if(a["timeIndex"] !== undefined || b["timeIndex"] !== undefined) {
+          console.log("I suspect we won't reach this.");
+          return a["timeIndex"][1] - b["timeIndex"][1];
+        }
+        return 0;
+      });
       return (
         <div className="col s12 m12 l12">
-          <Day dayNumber={i} courses={sortedCourses}/>
+          <Day dayNumber={i} key={i} courses={sortedCourses}/>
         </div>
       );
     });
@@ -46,17 +45,4 @@ var Calendar = React.createClass({
   handleNameChange: function(e){
     this.setState({calendarName: e.target.value});
   }
-
-  // addDropCourse: function(course){
-  //   var registeredCourses = this.state.registeredCourses;
-  //   for(var i = 0; i < course["dayIndex"].length; i++) {
-  //     registeredCourses[course["dayIndex"][i]-1] = registeredCourses[course["dayIndex"][i]-1].concat([course]);
-  //     console.log(registeredCourses);
-  //   }
-  //   this.setState({registeredCourses: registeredCourses});
-  // },
-  //
-  // getInitialState: function(){
-  //   return({registeredCourses: [[],[],[],[],[]] });
-  // }
 });

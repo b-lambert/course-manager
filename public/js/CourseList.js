@@ -52,7 +52,6 @@ var CourseList = React.createClass({
         // Otherwise add the coure.
         newCourse["active"] = true;
         coursesInDay[newCourse["name"]] = newCourse;
-        //console.log(coursesInDay);
       }
       // for (var key in coursesInDay) {
       //   if (dictionary.hasOwnProperty(key)) {
@@ -82,7 +81,6 @@ var CourseList = React.createClass({
     this.setState({registeredCourses: registeredCourses});
     return true;
   },
-  // Structure: [{"Class Name Here": {class: Object}, ...}, {}, {}]
   getInitialState: function(){
     return({registeredCourses: [{},{},{},{},{}] });
   }
