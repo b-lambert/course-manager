@@ -29,10 +29,16 @@ var CourseList = React.createClass({
       for(var j = 0; j < coursesInDay.length; j++) {
         var indexToInsert = null;
         // TODO Move this into a function
-        if((coursesInDay[j]["timeIndex"][1] > newCourse["timeIndex"][0] && coursesInDay[j]["timeIndex"][0] < newCourse["timeIndex"][0]) ||
-          (coursesInDay[j]["timeIndex"][0] > newCourse["timeIndex"][1] && coursesInDay[j]["timeIndex"][1] < newCourse["timeIndex"][1]) ||
-          (coursesInDay[j]["timeIndex"][0] == newCourse["timeIndex"][0] && coursesInDay[j]["timeIndex"][1] == newCourse["timeIndex"][1]) ||
-          (coursesInDay[j]["timeIndex"][0] > newCourse["timeIndex"][0] && coursesInDay[j]["timeIndex"][0] < newCourse["timeIndex"][1])
+
+        var newCourseStart = newCourse["timeIndex"][0];
+        var newCourseEnd = newCourse["timeIndex"][1];
+        var registeredCourseStart = coursesInDay[j]["timeIndex"][0];
+        var registeredCourseEnd = coursesInDay[j]["timeIndex"][1];
+
+        if((registeredCourseEnd > newCourseStart && registeredCourseStart < newCourseStart) ||
+          (registeredCourseStart > newCourseEnd && registeredCourseEnd < newCourseEnd) ||
+          (registeredCourseStart == newCourseStart && registeredCourseEnd == newCourseEnd) ||
+          (registeredCourseStart > newCourseStart && registeredCourseStart < newCourseEnd)
         ) {
           Materialize.toast("Could not register for this course due to a schedule conflict with " + coursesInDay[j]["name"], 4000);
           return false;
