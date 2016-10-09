@@ -11,9 +11,8 @@ var CourseList = React.createClass({
 
     return (
       <div >
-      <h2>Courses</h2>
-
         <div className="courseList col s6 m4 l2">
+        <h3>Courses</h3>
           {courseNodes}
         </div>
       <div className="col s6 m8 l10">
