@@ -1,16 +1,13 @@
 var Calendar = React.createClass({
   render: function() {
-    var that = this;
-
     var dayNodes = $.map(this.props.registeredCourses, function(courses, i) {
-      var unsortedCourses = courses;
-      var sortedCourses = []
-      for (var key in unsortedCourses) {
-        if (unsortedCourses.hasOwnProperty(key)) {
-          sortedCourses.push(unsortedCourses[key]);
+      var courseArray = [];
+      for (var key in courses) {
+        if (courses.hasOwnProperty(key)) {
+          courseArray.push(courses[key]);
         }
       }
-      sortedCourses.sort(function(a, b) {
+      courseArray.sort(function(a, b) {
         // We can guarantee no overlaps at this point.
         if(a["timeIndex"] !== undefined || b["timeIndex"] !== undefined) {
           return a["timeIndex"][1] - b["timeIndex"][1];
@@ -19,7 +16,7 @@ var Calendar = React.createClass({
       });
       return (
         <div className="col s12 m12 l12">
-          <Day dayNumber={i} key={i} courses={sortedCourses}/>
+          <Day dayNumber={i} key={i} courses={courseArray}/>
         </div>
       );
     });
