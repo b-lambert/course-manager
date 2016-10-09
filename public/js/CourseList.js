@@ -36,7 +36,7 @@ var CourseList = React.createClass({
         ) {
           // TODO more elegant error handling.
           alert("Could not add this course due to a schedule conflict with " + coursesInDay[j]["name"]);
-          return;
+          return false;
         }
         // TODO: if you have 9am-11am and 7am-9am (also, out of order lol) and add 10am-12pm, doesnt work since proptery 0 is undefined
         else if(indexToInsert === null && ((j < coursesInDay.length - 1) && ([j]["timeIndex"][0] >= course["timeIndex"][1]))){
@@ -46,6 +46,7 @@ var CourseList = React.createClass({
       registeredCourses[course["dayIndex"][i]-1].splice(indexToInsert, 0, course);
     }
     this.setState({registeredCourses: registeredCourses});
+    return true;
   },
 
   getInitialState: function(){

@@ -30,6 +30,6 @@ var Course = React.createClass({
 
   addDropCourse: function(){
     // TODO update state
-    this.props.addDropCourse(this.props.course);
+    console.log(this.props.addDropCourse(this.props.course));
   }
 });

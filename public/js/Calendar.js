@@ -13,8 +13,8 @@ var Calendar = React.createClass({
     return (
       <div>
       <h3>Weekly Schedule</h3>
-        <div class="input-field">
-          <label for="calendarName">Calendar Name:</label>
+        <div className="input-field">
+          <label htmlFor="calendarName">Calendar Name:</label>
           <input onChange={this.handleNameChange} placeholder={this.state.calendarName} id="calendarName" type="text"></input>
         </div>
         <div className="row">
