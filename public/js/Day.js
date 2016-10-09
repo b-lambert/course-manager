@@ -8,6 +8,7 @@ var Day = React.createClass({
         </div>
       );
     });
+
     if(courseNodes.length === 0) {
       return (
         <div>

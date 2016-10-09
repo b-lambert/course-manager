@@ -1,5 +1,6 @@
 var Course = React.createClass({
   render: function(){
+    var actionName = this.state.registered ? "Unregister" : "Register";
     return (
       <div className="card">
         <div className="card-content">
@@ -17,13 +18,18 @@ var Course = React.createClass({
           </p>
         </div>
         <div className="card-action">
-          <a onClick={this.addDropCourse}>Register</a>
+          <a onClick={this.addDropCourse}>{actionName}</a>
         </div>
       </div>
     );
   },
 
+  getInitialState: function(){
+    return({registered: false});
+  },
+
   addDropCourse: function(){
+    // TODO update state
     this.props.addDropCourse(this.props.course);
   }
 });

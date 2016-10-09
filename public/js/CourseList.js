@@ -12,12 +12,12 @@ var CourseList = React.createClass({
     return (
       <div >
         <div className="courseList col s6 m4 l2">
-        <h3>Courses</h3>
+        <h3>All Courses</h3>
           {courseNodes}
         </div>
-      <div className="col s6 m8 l10">
-        <Calendar registeredCourses={this.state.registeredCourses} />
-      </div>
+        <div className="col s6 m8 l10">
+          <Calendar registeredCourses={this.state.registeredCourses} />
+        </div>
       </div>
     );
   },
@@ -26,7 +26,6 @@ var CourseList = React.createClass({
     var registeredCourses = this.state.registeredCourses;
     for(var i = 0; i < course["dayIndex"].length; i++) {
       var coursesInDay = registeredCourses[course["dayIndex"][i]-1];
-      //console.log(coursesInDay);
       for(var j = 0; j < coursesInDay.length; j++) {
         var indexToInsert = null;
         // TODO Move this into a function
