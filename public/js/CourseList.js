@@ -48,6 +48,7 @@ var CourseList = React.createClass({
           indexToInsert = j;
         }
       }
+      newCourse["active"] = true
       registeredCourses[newCourse["dayIndex"][i]-1].splice(indexToInsert, 0, newCourse);
     }
     this.setState({registeredCourses: registeredCourses});

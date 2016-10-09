@@ -1,6 +1,6 @@
 var Course = React.createClass({
   render: function(){
-    var actionName = this.state.registered ? "Unregister" : "Register";
+    var actionName = this.props.course["active"] ? "Unregister" : "Register";
     return (
       <div className="card">
         <div className="card-content">
