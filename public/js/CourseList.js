@@ -27,7 +27,8 @@ var CourseList = React.createClass({
         // TODO Move this into a function
         if((coursesInDay[j]["timeIndex"][1] > course["timeIndex"][0] && coursesInDay[j]["timeIndex"][0] < course["timeIndex"][0]) ||
           (coursesInDay[j]["timeIndex"][0] > course["timeIndex"][1] && coursesInDay[j]["timeIndex"][1] < course["timeIndex"][1]) ||
-          (coursesInDay[j]["timeIndex"][0] == course["timeIndex"][0] && coursesInDay[j]["timeIndex"][1] == course["timeIndex"][1])
+          (coursesInDay[j]["timeIndex"][0] == course["timeIndex"][0] && coursesInDay[j]["timeIndex"][1] == course["timeIndex"][1]) ||
+          (coursesInDay[j]["timeIndex"][0] > course["timeIndex"][0] && coursesInDay[j]["timeIndex"][0] < course["timeIndex"][1])
         ) {
           // TODO more elegant error handling.
           alert("Could not add this course due to a schedule conflict with " + coursesInDay[j]["name"]);
