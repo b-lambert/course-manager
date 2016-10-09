@@ -9,7 +9,7 @@ var Day = React.createClass({
     });
 
     return (
-      <div className="col" >
+      <div>
         <h4>{this.getDayName(this.props.dayNumber)}</h4>
         {courseNodes}
       </div>
