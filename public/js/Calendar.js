@@ -7,10 +7,10 @@ var Calendar = React.createClass({
           courseArray.push(courses[key]);
         }
       }
-      courseArray.sort(function(a, b) {
+      courseArray.sort(function(c1, c2) {
         // We can guarantee no overlaps at this point.
-        if(a["timeIndex"] !== undefined || b["timeIndex"] !== undefined) {
-          return a["timeIndex"][1] - b["timeIndex"][1];
+        if(c1["timeIndex"] !== undefined || c2["timeIndex"] !== undefined) {
+          return c1["timeIndex"][1] - c2["timeIndex"][1];
         }
         return 0;
       });
@@ -26,7 +26,12 @@ var Calendar = React.createClass({
       <h3>Weekly Schedule</h3>
         <div class="input-field">
           <label htmlFor="calendarName">Calendar Name:</label>
-          <input onChange={this.handleNameChange} placeholder={this.state.calendarName} id="calendarName" type="text"></input>
+          <input
+            onChange={this.handleNameChange}
+            placeholder={this.state.calendarName}
+            id="calendarName"
+            type="text">
+          </input>
         </div>
         <div className="row">
           {dayNodes}
