@@ -22,27 +22,27 @@ var CourseList = React.createClass({
     );
   },
 
-  addDropCourse: function(course){
+  addDropCourse: function(newCourse){
     var registeredCourses = this.state.registeredCourses;
-    for(var i = 0; i < course["dayIndex"].length; i++) {
-      var coursesInDay = registeredCourses[course["dayIndex"][i]-1];
+    for(var i = 0; i < newCourse["dayIndex"].length; i++) {
+      var coursesInDay = registeredCourses[newCourse["dayIndex"][i]-1];
       for(var j = 0; j < coursesInDay.length; j++) {
         var indexToInsert = null;
         // TODO Move this into a function
-        if((coursesInDay[j]["timeIndex"][1] > course["timeIndex"][0] && coursesInDay[j]["timeIndex"][0] < course["timeIndex"][0]) ||
-          (coursesInDay[j]["timeIndex"][0] > course["timeIndex"][1] && coursesInDay[j]["timeIndex"][1] < course["timeIndex"][1]) ||
-          (coursesInDay[j]["timeIndex"][0] == course["timeIndex"][0] && coursesInDay[j]["timeIndex"][1] == course["timeIndex"][1]) ||
-          (coursesInDay[j]["timeIndex"][0] > course["timeIndex"][0] && coursesInDay[j]["timeIndex"][0] < course["timeIndex"][1])
+        if((coursesInDay[j]["timeIndex"][1] > newCourse["timeIndex"][0] && coursesInDay[j]["timeIndex"][0] < newCourse["timeIndex"][0]) ||
+          (coursesInDay[j]["timeIndex"][0] > newCourse["timeIndex"][1] && coursesInDay[j]["timeIndex"][1] < newCourse["timeIndex"][1]) ||
+          (coursesInDay[j]["timeIndex"][0] == newCourse["timeIndex"][0] && coursesInDay[j]["timeIndex"][1] == newCourse["timeIndex"][1]) ||
+          (coursesInDay[j]["timeIndex"][0] > newCourse["timeIndex"][0] && coursesInDay[j]["timeIndex"][0] < newCourse["timeIndex"][1])
         ) {
           Materialize.toast("Could not register for this course due to a schedule conflict with " + coursesInDay[j]["name"], 4000);
           return false;
         }
         // TODO: if you have 9am-11am and 7am-9am (also, out of order lol) and add 10am-12pm, doesnt work since proptery 0 is undefined
-        else if(indexToInsert === null && ((j < coursesInDay.length - 1) && ([j]["timeIndex"][0] >= course["timeIndex"][1]))){
+        else if(indexToInsert === null && ((j < coursesInDay.length - 1) && ([j]["timeIndex"][0] >= newCourse["timeIndex"][1]))){
           indexToInsert = j;
         }
       }
-      registeredCourses[course["dayIndex"][i]-1].splice(indexToInsert, 0, course);
+      registeredCourses[newCourse["dayIndex"][i]-1].splice(indexToInsert, 0, newCourse);
     }
     this.setState({registeredCourses: registeredCourses});
     return true;
