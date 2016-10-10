@@ -1,4 +1,4 @@
-var CourseList = React.createClass({
+var CourseManager = React.createClass({
   render: function() {
     var context = this;
     var courseNodes = $.map(this.props.data["courses"], function(course) {

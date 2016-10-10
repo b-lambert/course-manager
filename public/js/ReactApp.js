@@ -2105,5 +2105,4 @@ var data = {
    ]
 };
 
-
-ReactDOM.render(<CourseList data={data}/>, document.getElementById('app'));
+ReactDOM.render(<CourseManager data={data}/>, document.getElementById('app'));
