@@ -4,7 +4,7 @@ var Day = React.createClass({
     var courseNodes = $.map(this.props.courses, function(course) {
       return (
         <div>
-          <Course dropCourse={context.props.dropCourse} course={course}/>
+          <Course addDropCourse={context.props.addDropCourse} course={course}/>
         </div>
       );
     });

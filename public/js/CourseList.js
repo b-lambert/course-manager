@@ -21,7 +21,7 @@ var CourseList = React.createClass({
           {courseNodes}
         </div>
         <div className="col s6 m8 l10">
-          <Calendar dropCourse={this.dropCourse} registeredCourses={this.state.registeredCourses} />
+          <Calendar addDropCourse={this.addDropCourse} registeredCourses={this.state.registeredCourses} />
         </div>
       </div>
     );
@@ -50,7 +50,7 @@ var CourseList = React.createClass({
               (registeredCourseStart > newCourseStart && registeredCourseStart < newCourseEnd)
             ) {
               Materialize.toast("Could not register for this course due to a schedule conflict with " + courseName, 4000);
-              return false;
+              return;
             }
           }
         }
@@ -61,18 +61,9 @@ var CourseList = React.createClass({
       registeredCourses[newCourse["name"]] = newCourse;
     }
     this.setState({registeredCourses: registeredCourses});
-    return true;
   },
 
   getInitialState: function(){
-    return({registeredCourses: [{},{},{},{},{}] });
-  },
-
-  dropCourse: function(course){
-    var registeredCourses = this.state.registeredCourses;
-    for(var i = 0; i < course["dayIndex"].length; i++) {
-      delete registeredCourses[course["dayIndex"][i]-1][course["name"]];
-    }
-    this.setState({registeredCourses: registeredCourses});
+    return({registeredCourses: [{},{},{},{},{}]});
   }
 });

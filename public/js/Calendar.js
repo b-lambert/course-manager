@@ -17,7 +17,7 @@ var Calendar = React.createClass({
       });
       return (
         <div className="col s12 m12 l12">
-          <Day dropCourse={context.props.dropCourse} dayNumber={i} key={i} courses={courseArray}/>
+          <Day addDropCourse={context.props.addDropCourse} dayNumber={i} key={i} courses={courseArray}/>
         </div>
       );
     });

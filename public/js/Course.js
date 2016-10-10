@@ -24,17 +24,7 @@ var Course = React.createClass({
     );
   },
 
-  getInitialState: function(){
-    return({registered: false});
-  },
-
   addDropCourse: function(){
-    if(this.props.dropCourse !== undefined) {
-      this.props.dropCourse(this.props.course);
-    }
-    if(this.props.addDropCourse(this.props.course) === true) {
-      var registered = this.state.registered;
-      this.setState({registered: !registered});
-    }
+    this.props.addDropCourse(this.props.course);
   }
 });
