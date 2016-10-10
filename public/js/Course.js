@@ -29,6 +29,9 @@ var Course = React.createClass({
   },
 
   addDropCourse: function(){
+    if(this.props.dropCourse !== undefined) {
+      this.props.dropCourse(this.props.course);
+    }
     if(this.props.addDropCourse(this.props.course) === true) {
       var registered = this.state.registered;
       this.setState({registered: !registered});

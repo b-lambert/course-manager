@@ -1,10 +1,10 @@
 var Day = React.createClass({
   render: function() {
-
+    var context = this;
     var courseNodes = $.map(this.props.courses, function(course) {
       return (
         <div>
-          <Course course={course}/>
+          <Course dropCourse={context.props.dropCourse} course={course}/>
         </div>
       );
     });

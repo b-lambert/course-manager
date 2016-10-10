@@ -16,7 +16,7 @@ var CourseList = React.createClass({
           {courseNodes}
         </div>
         <div className="col s6 m8 l10">
-          <Calendar registeredCourses={this.state.registeredCourses} />
+          <Calendar dropCourse={this.dropCourse} registeredCourses={this.state.registeredCourses} />
         </div>
       </div>
     );
@@ -60,5 +60,13 @@ var CourseList = React.createClass({
   },
   getInitialState: function(){
     return({registeredCourses: [{},{},{},{},{}] });
+  },
+
+  dropCourse: function(course){
+    var registeredCourses = this.state.registeredCourses;
+    for(var i = 0; i < course["dayIndex"].length; i++) {
+      delete registeredCourses[course["dayIndex"][i]-1][course["name"]];
+    }
+    this.setState({registeredCourses: registeredCourses});
   }
 });

@@ -1,5 +1,6 @@
 var Calendar = React.createClass({
   render: function() {
+    var context = this;
     var dayNodes = $.map(this.props.registeredCourses, function(courses, i) {
       var courseArray = [];
       for (var key in courses) {
@@ -16,7 +17,7 @@ var Calendar = React.createClass({
       });
       return (
         <div className="col s12 m12 l12">
-          <Day dayNumber={i} key={i} courses={courseArray}/>
+          <Day dropCourse={context.props.dropCourse} dayNumber={i} key={i} courses={courseArray}/>
         </div>
       );
     });
