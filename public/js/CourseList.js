@@ -1,10 +1,15 @@
 var CourseList = React.createClass({
   render: function() {
-    var that = this;
+    var context = this;
     var courseNodes = $.map(this.props.data["courses"], function(course) {
       return (
         <div>
-          <Course key={course["id"]} addDropCourse={that.addDropCourse} registeredCourses={that.state.registeredCourses} course={course}/>
+          <Course
+            key={course["id"]}
+            addDropCourse={context.addDropCourse}
+            registeredCourses={context.state.registeredCourses}
+            course={course}
+          />
         </div>
       );
     });
@@ -58,6 +63,7 @@ var CourseList = React.createClass({
     this.setState({registeredCourses: registeredCourses});
     return true;
   },
+
   getInitialState: function(){
     return({registeredCourses: [{},{},{},{},{}] });
   },

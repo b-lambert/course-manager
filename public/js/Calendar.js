@@ -21,7 +21,7 @@ var Calendar = React.createClass({
         </div>
       );
     });
-    // TODO give input some kind of maxwidth
+
     return (
       <div>
       <h3>Weekly Schedule</h3>
