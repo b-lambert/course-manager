@@ -19,7 +19,6 @@ var Calendar = React.createClass({
           <Day
             addDropCourse={context.props.addDropCourse}
             dayNumber={i}
-            key={i}
             courses={courseArray}/>
         </div>
       );

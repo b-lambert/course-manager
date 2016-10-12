@@ -5,7 +5,6 @@ var CourseManager = React.createClass({
       return (
         <div>
           <Course
-            key={course["id"]}
             addDropCourse={context.addDropCourse}
             registeredCourses={context.state.registeredCourses}
             course={course}
