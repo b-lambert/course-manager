@@ -4,7 +4,7 @@ This is a React Application hosted on an ExpressJS server.
 
 ## Prerequisites
 
-1. You must have [NPM](https://docs.npmjs.com/getting-started/installing-node) installed on your machine.
+1. You must have [NPM](https://docs.npmjs.com/getting-started/installing-node) installed on your machine (Running npm install shouldn't be necessary).
 
 ## Deployment
 
