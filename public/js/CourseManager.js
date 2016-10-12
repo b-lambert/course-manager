@@ -64,6 +64,7 @@ var CourseManager = React.createClass({
   },
 
   getInitialState: function(){
+    // registeredCourses will contain an array of hashes, each representing the registered courses for each day.
     return({data: {}, registeredCourses: [{},{},{},{},{}]});
   },
 

@@ -17,16 +17,18 @@ var Day = React.createClass({
         </div>
       );
     }
-    return (
-      <div>
-        <h4>{this.getDayName(this.props.dayNumber)}</h4>
-        {courseNodes}
-      </div>
-    );
+    else {
+      return (
+        <div>
+          <h4>{this.getDayName(this.props.dayNumber)}</h4>
+          {courseNodes}
+        </div>
+      );
+    }
   },
 
   getInitialState: function(){
-    return({course: this.props.courses });
+    return({course: this.props.courses});
   },
 
   getDayName: function(dayNumber){
