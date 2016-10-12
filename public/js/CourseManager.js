@@ -1,7 +1,7 @@
 var CourseManager = React.createClass({
   render: function() {
     var context = this;
-    var courseNodes = $.map(this.props.data["courses"], function(course) {
+    var courseNodes = $.map(this.state.data.courses, function(course) {
       return (
         <div>
           <Course
@@ -65,5 +65,20 @@ var CourseManager = React.createClass({
 
   getInitialState: function(){
     return({registeredCourses: [{},{},{},{},{}]});
+  },
+
+  componentDidMount: function() {
+    var context = this;
+    $.ajax({
+      url: "/courses",
+      dataType: "json",
+      type: "GET",
+      success: function(data){
+        context.setState({data: data});
+      },
+      fail: function(err) {
+        Materialize.toast("Could not load courses, please try again later.", 4000);
+      }
+    });
   }
 });
