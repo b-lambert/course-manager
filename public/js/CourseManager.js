@@ -64,7 +64,7 @@ var CourseManager = React.createClass({
   },
 
   getInitialState: function(){
-    return({registeredCourses: [{},{},{},{},{}]});
+    return({data: {}, registeredCourses: [{},{},{},{},{}]});
   },
 
   componentDidMount: function() {
