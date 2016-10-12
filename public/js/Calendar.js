@@ -13,7 +13,6 @@ var Calendar = React.createClass({
         if(c1["timeIndex"] !== undefined || c2["timeIndex"] !== undefined) {
           return c1["timeIndex"][1] - c2["timeIndex"][1];
         }
-        return 0;
       });
       return (
         <div className="col s12 m12 l12">
